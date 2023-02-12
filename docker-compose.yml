@@ -1,0 +1,39 @@
+version: '2'
+
+#here we create the volumes. We keep the same names for backup purpouses
+volumes:
+  homebridge:
+    name: homebridge
+  airconnect:
+    name: airconnect
+
+#we put all containers under the same newtwork
+networks:
+  smarthome:
+    driver: bridge
+    name: smarthome_network
+    ipam:
+      config:
+        - subnet: 10.2.0.0/16
+
+services:
+#Homebridge allows you to integrate with smart home devices that do not natively support HomeKit.
+  homebridge:
+    container_name: homebridge
+    image: oznu/homebridge:latest
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+    volumes:
+      - homebridge:/homebridge
+    restart: unless-stopped
+    network_mode: host
+#AirConnect: It allows you to be able to use AirPlay to push audio to Chromecast and UPNP based devices.
+  airconnect:
+    container_name: airconnect
+    image: 1activegeek/airconnect
+    network_mode: host
+    restart: unless-stopped
