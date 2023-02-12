@@ -7,15 +7,6 @@ volumes:
   airconnect:
     name: airconnect
 
-#we put all containers under the same newtwork
-networks:
-  smarthome:
-    driver: bridge
-    name: smarthome_network
-    ipam:
-      config:
-        - subnet: 10.2.0.0/16
-
 services:
 #Homebridge allows you to integrate with smart home devices that do not natively support HomeKit.
   homebridge:
