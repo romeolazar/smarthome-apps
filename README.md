@@ -10,11 +10,16 @@ LANG=:us:
 - Server platform: [Rocky Linux 8](https://rockylinux.org/download)
 
 # Applications
-## smarthome-apps
+## SmartHome Apps
 ### [Homebridge](https://homebridge.io)
 Homebridge allows you to integrate with smart home devices that do not natively support HomeKit. There are over 2,000 Homebridge plugins supporting thousands of different smart accessories. \
 DockerHub: [oznu/homebridge](https://hub.docker.com/r/oznu/homebridge) \
 GitHub: [oznu/homebridge](https://github.com/oznu/docker-homebridge)
+
+### [HomeAssistant](https://www.home-assistant.io)
+Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server. \
+DockerHub: [linuxserver/homeassistant](https://hub.docker.com/r/linuxserver/homeassistant) \
+GitHub: [linuxserver/docker-homeassistant](https://github.com/linuxserver/docker-homeassistant)
 
 ### [Airconnect]()
 Turning Chromecast into Airplay targets. \
@@ -24,5 +29,5 @@ GitHub: [1activegeek/docker-airconnect](https://github.com/1activegeek/docker-ai
 ## Info
 Because all the services are setup with `docker-compose` they can all reach each other by their Docker Compose service name. So for example when connecting Sonarr with Jacket or qBittorrent, then Jackett would be available on `http://jackett/api....`, which makes everything a lot easier.
 
-### Edit the .env file
-All configuration to this setup, I've put in the `.env` file, so all you have to do is go through it and edit it to fit your needs.
+### The .env file
+All configuration to this setup, I've put in the `common.env` file, so all you have to do is go through it and edit it to fit your needs.
