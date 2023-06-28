@@ -10,8 +10,6 @@ volumes:
 services:
 #Homebridge allows you to integrate with smart home devices that do not natively support HomeKit.
   homebridge:
-    env_file:
-      - .env
     container_name: homebridge
     image: oznu/homebridge:latest
     environment:
@@ -26,16 +24,12 @@ services:
     restart: always
 #AirConnect: It allows you to be able to use AirPlay to push audio to Chromecast and UPNP based devices.
   airconnect:
-    env_file:
-      - .env
     container_name: airconnect
     image: 1activegeek/airconnect
     network_mode: host
     restart: unless-stopped
 #Home Assistant - Open source home automation that puts local control and privacy first.
   homeassistant:
-    env_file:
-      - .env
     container_name: homeassistant
     image: ghcr.io/home-assistant/home-assistant:stable
     environment:
